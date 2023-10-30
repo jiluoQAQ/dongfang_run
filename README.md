@@ -4,7 +4,7 @@
 
 ## 安装
 
-把项目文件放在名称为pcr_run文件夹里, 直接丢到hoshinobot的priconne里应该就可以了。
+把项目文件放在名称为dongfang_run文件夹里, 直接丢到hoshinobot的priconne里应该就可以了。
 
 ## 指令表
 
