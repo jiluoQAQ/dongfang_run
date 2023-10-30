@@ -1,4 +1,4 @@
-# Pcr_Run
+# Dongfang_Run
 
 本插件为东方角色的赛跑小游戏，改编自pcr_run，使用HoshinoV2开发，内置了分群积分和下注系统。
 
