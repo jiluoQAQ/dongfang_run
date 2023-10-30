@@ -1,0 +1,350 @@
+{
+ "1":{  
+	  "name":"灵梦",
+      "icon":"🔍",
+	  "image":"灵梦.png",
+	  "speed":[1,2,2,2,2,1,1,1],
+	  "skill":{
+				"1":{
+					"skill_porb":0.1,
+					"skill_text":"'供奉十万元，我什么都做'，灵梦发起了供奉请求，其他人员后退1步",
+					"skill_effect":"n_backward(select_all(id),1,position,wudi)"
+					},
+				"2":{
+					"skill_porb":0.1,
+					"skill_text":"灵梦使用了「封魔阵」，灵梦前进2步，灵梦之外全员沉默1回合！",
+					"skill_effect":"forward(id,2,position)\nn_give_silence(select_all(id),1,silence)"
+					},		
+				"3":{
+					"skill_porb":0.08,
+					"skill_text":"灵梦使用了技能「梦想封印」 ，灵梦前进2步，灵梦之外全员暂停1回合！",
+					"skill_effect":"forward(id,2,position)\nn_give_pause(select_all(id),1,pause)"
+					},
+				"4":{
+				    "skill_porb":0.02,
+				    "skill_text":"「梦想天生」灵梦发动究极奥义，前进6步，除了自己外的人员后退2步",
+				    "skill_effect":"forward(id,6,position)\nn_backward(select_all(id),2,position,wudi)"
+					}
+			   }
+								
+	}  ,
+	  
+	  
+ "2":{  
+	  "name":"魔理沙",
+      "icon":"🍙",
+	  "image":"魔理沙.png",
+	  "speed":[1,1,2,2,1,1,2],
+	  "skill":{
+				"1":{
+					"skill_porb":0.1,
+					"skill_text":"魔符「Stardust Reverie」，魔理沙跨上扫帚与星尘共同突进，前进2步。",
+					"skill_effect":"forward(id,2,position)"
+					},
+				"2":{
+					"skill_porb":0.1,
+					"skill_text":"星符「Meteonic Shower」，魔理沙向前方发射出大量散弹攻击，将自己外第1名和第2名击退2步。",
+					"skill_effect":"backward(select_number(position,id,2),2,position,wudi)\nbackward(select_fast(position,id),2,position,wudi)"
+					},		
+				"3":{
+					"skill_porb":0.08,
+					"skill_text":"恋符「Master Spark」，魔理沙掏出八卦炉，向四周发射弹幕，自己前进2步，其他成员退后一步",
+					"skill_effect":"forward(id,2,position)\nn_backward(select_all(id),1,position,wudi)"
+					},
+				"4":{
+				    "skill_porb":0.02,
+				    "skill_text":"魔炮「Final Spark」，魔理沙借助魔炮的推力向前猛冲7步，不过由于魔力不足，沉默并休息一回合。",
+				    "skill_effect":"forward(id,8,position)\ngive_pause(id,1,pause)\ngive_silence(id,1,silence)"
+					}
+			   }
+								
+	}  	,  
+ "3":{  
+	  "name":"紫",
+      "icon":"🎸",
+	  "image":"紫.png",
+	  "speed":[1,2,2,2,2,1,1],
+	  "skill":{
+				"1":{
+					"skill_porb":0.1,
+					"skill_text":"“你们要让让年轻人”，紫发动特权'17岁少女'前进2步",
+					"skill_effect":"forward(id,2,position)"
+					},
+				"2":{
+					"skill_porb":0.1,
+					"skill_text":"结界「动与静的均衡」，紫使用了境界之力，自己前进2步，其他成员休息一回合",
+					"skill_effect":"forward(id,2,position)\nn_give_pause(select_all(id),1,pause)"
+					},		
+				"3":{
+					"skill_porb":0.09,
+					"skill_text":"紫使用了间隙，",
+					"skill_effect":"gid=select_random(id)\nchange_position(id,gid,position,wudi)\nforward(id,2,position)\ntext=f'出现在了{gid}号选手旁边，把{gid}号选手丢到了自己刚才的位置，并前进了2步。'"
+					},
+				"4":{
+				    "skill_porb":0.02,
+				    "skill_text":"结界「生与死的境界」，紫使用了境界之力，除了自己外的人员沉默并暂停2回合",
+				    "skill_effect":"n_give_silence(select_all(id),2,silence)\nn_give_pause(select_all(id),2,pause)"
+					}
+			   }
+								
+	}  	,  
+"4":{  
+	  "name":"早苗",
+      "icon":"🐱",
+	  "image":"早苗.png",
+	  "speed":[1,2,2,2,2,1,1],
+	  "skill":{
+				"1":{
+					"skill_porb":0.1,
+					"skill_text":"奇迹「白昼的客星」早苗在前方2步处唤出星形术印，移动到此处。",
+					"skill_effect":"forward(id,2,position)"
+					},
+				"2":{
+					"skill_porb":0.1,
+					"skill_text":"开海「海水分开之日」以早苗为中心向左右发射巨大的波浪\n",
+					"skill_effect":"shuchu=n_backward_r(select_all(id),1,2,position,wudi)\ntext=shuchu"
+					},
+				"3":{
+					"skill_porb":0.08,
+					"skill_text":"准备「呼唤神风的星之仪式」早苗祈求风神的庇佑，接下来3回合内免疫沉默，暂停，击退等负面效果",
+					"skill_effect":"give_wudi(id,3,wudi)"
+					},
+				"4":{
+				    "skill_porb":0.02,
+				    "skill_text":"大奇迹「八坂之神风」以早苗为中心形成巨大旋风，自身前进5步\n",
+				    "skill_effect":"forward(id,5,position)\nshuchu=n_run_r(select_all(id),1,2,position,wudi)\ntext=shuchu"
+					}
+			   }
+								
+	}  	,  	  
+"5":{  
+	  "name":"萃香",
+      "icon":"😷",
+	  "image":"萃香.png",
+	  "speed":[1,1,2,2,2,2,1],
+	  "skill":{
+				"1":{
+					"skill_porb":0.1,
+					"skill_text":"醉神「鬼缚之术」！萃香使自己外第一名后退2步，第二名暂停1回合。",
+					"skill_effect":"backward(select_fast(position,id),2,position,wudi)\ngive_pause(select_number(position,id,2),1,pause)"
+					},
+				"2":{
+					"skill_porb":0.1,
+					"skill_text":"萃鬼「天手力男之投」，萃香前进了2步。下一回合必放鬼神。",
+					"skill_effect":"forward(id,2,position)\ngive_ub(id,1,ub)\ngive_pause(id,1,pause)"
+					},		
+				"3":{
+					"skill_porb":0.09,
+					"skill_text":"鬼神「Missing Purple Power」,",
+					"skill_effect":"step=1*kan_num\nforward(id,step,position)\nkan_num1=1\ntext=f'萃香前进了{step}步，并且变得更强了。'\nprint(kan_num1)"
+					},
+				"4":{
+				    "skill_porb":0.03,
+				    "skill_text":"「百万鬼夜行」'好久没见识过鬼的力量了',萃香前进了4步，且下一回合必放鬼神！",
+				    "skill_effect":"forward(id,4,position)\ngive_ub(id,1,ub)"
+					}
+			   }
+								
+	} ,
+"6":{
+	"name":"蕾米",
+	"icon":"😷",
+	"image":"蕾米.png",
+	"speed":[1,1,2,2,2,2,1],
+	"skill":{
+			"1":{
+				"skill_porb":0.1,
+				"skill_text":"天罚「Star of David」,蕾米召唤恶魔，自己外其他成员后退1步，第一名额外后退一步",
+				"skill_effect":"backward(select_fast(position,id),1,position,wudi)\nn_backward(select_all(id),1,position,wudi)"
+				},
+			"2":{
+				"skill_porb":0.1,
+				"skill_text":"'不要打我'，蕾米'威严满满'，其他人员见状不对蕾米出手2回合",
+				"skill_effect":"give_wudi(id,2,wudi)"
+				},		
+			"3":{
+				"skill_porb":0.08,
+				"skill_text":"神枪「Spear the Gungnir」,蕾米发动冈格尼尔，把第一名击退2步。",
+				"skill_effect":"text=prob_text(prob_gengsui(0.5,id,select_fast(position,id),position),'投掷失误，自己也被带过去了。','')\nbackward(select_fast(position,id),2,position,wudi)"
+				},
+			"4":{
+				"skill_porb":0.02,
+				"skill_text":"红符「红色不夜城」蕾米发动技能，其他人员后退2步，沉默并休息一回合。由于规模较大，休息一回合",
+				"skill_effect":"n_give_silence(select_all(id),1,silence)\nn_give_pause(select_all(id),1,pause)\nn_backward(select_all(id),2,position,wudi)\ngive_pause(id,1,pause)"
+				}
+		   }
+	},
+"7":{
+	"name":"妖梦",
+	"icon":"😷",
+	"image":"妖梦.png",
+	"speed":[1,1,2,2,2,2,1],
+	"skill":{
+			"1":{
+				"skill_porb":0.1,
+				"skill_text":"狱界剑「二百由旬之一闪」妖梦拔剑向前突刺，前进1,",
+				"skill_effect":"forward(id,1,position)\nshuchu=prob_for_back(select_xt_all(id,position),id,1,2,position,wudi)\ntext=shuchu"
+				},
+			"2":{
+				"skill_porb":0.1,
+				"skill_text":"人界剑「悟入幻想」妖梦释放出大量剑气，所有人1回合内停止移动",
+				"skill_effect":"n_give_pause(select_all(id),1,pause)"
+				},		
+			"3":{
+				"skill_porb":0.07,
+				"skill_text":"天神剑「三魂七魄」妖梦瞬移至除妖梦外第一名的选手处，将其击退2步",
+				"skill_effect":"gid=select_fast(position,id)\ngengsui(id,gid,position)\nbackward(gid,2,position,wudi)"
+				},
+			"4":{
+				"skill_porb":0.03,
+				"skill_text":"六道剑「一念无量劫」妖梦以超高速对周遭发动劈砍，",
+				"skill_effect":"text=n_give_prob_silence(select_fast_all(id,position),select_all(id),3,2,silence)"
+				}
+		   }
+	},
+"8":{
+	"name":"恋",
+	"icon":"😷",
+	"image":"恋.png",
+	"speed":[1,1,2,2,2,2,1],
+	"skill":{
+			"1":{
+				"skill_porb":0.1,
+				"skill_text":"抑制「Super Ego」，最大化地压抑精神，其他人员受到恋的影响无意识地向恋的方向移动2步",
+				"skill_effect":"n_kaojin(select_all(id),id,2,position,wudi)"
+				},
+			"2":{
+				"skill_porb":0.08,
+				"skill_text":"本能「本我的解放」，将开放的精神最大化释放，其他人员受到该感情的余波无意识地向远离恋的方向移动1步",
+				"skill_effect":"n_yuanli(select_all(id),id,1,position,wudi)"
+				},		
+			"3":{
+				"skill_porb":0.09,
+				"skill_text":"「Brambly Rose Garden」,",
+				"skill_effect":"gid=select_random(id)\ngive_pause(gid,1,pause)\ngive_silence(gid,1,silence)\nn_kaojin(select_all(id),gid,2,position,wudi)\ntext=f'恋向{gid}号选手使用技能，{gid}号成员暂停并沉默1回合，其他人员向{gid}号靠近2步'"
+				},
+			"4":{
+				"skill_porb":0.03,
+				"skill_text":"梦符「先祖大人在看着你」，其他成员受到惊吓",
+				"skill_effect":"shuchu=n_backward_r(select_all(id),1,3,position,wudi)\ntext=shuchu"
+				}
+		   }
+	},
+"9":{
+	"name":"咲夜",
+	"icon":"😷",
+	"image":"咲夜.png",
+	"speed":[1,1,2,2,2,2,1],
+	"skill":{
+			"1":{
+				"skill_porb":0.1,
+				"skill_text":"幻葬「夜雾幻影杀人鬼」咲夜向前冲刺并投掷飞刀，前进1步，",
+				"skill_effect":"text=n_give_prob_pause(select_fast_all(id,position),select_all(id),1,1,pause)\nforward(id,1,position)"
+				},
+			"2":{
+				"skill_porb":0.1,
+				"skill_text":"奇术「幻惑Misdirection」表面是魔术其实不过是操纵时间的小把戏。咲夜前进1步，",
+				"skill_effect":"gid=select_random(id)\nforward(id,1,position)\ngive_silence(gid,1,silence)\ntext=f'使{gid}号选手沉默1回合'"
+				},		
+			"3":{
+				"skill_porb":0.08,
+				"skill_text":"幻世「The World」时间停止！咲夜2回合内免疫击退与停止，除咲夜所有人后退1步",
+				"skill_effect":"give_wudi(id,2,wudi)\nn_backward(select_all(id),1,position,wudi)"
+				},
+			"4":{
+				"skill_porb":0.02,
+				"skill_text":"「咲夜的世界」现在是独属于咲夜的时间！咲夜连续行动2次，下回合必定使用「The World」",
+				"skill_effect":"n_give_shiting(select_all(id),2,shiting)\ngive_ub(id,1,ub)"
+				}
+		   }
+	},
+"10":{
+	"name":"天子",
+	"icon":"😷",
+	"image":"天子.png",
+	"speed":[1,1,2,2,2,2,1],
+	"skill":{
+			"1":{
+				"skill_porb":0.1,
+				"skill_text":"非想「非想非非想之剑」能洞察对手弱点的绯想之剑！将第一名击退1步，并使其沉默休息1回合",
+				"skill_effect":"gid=select_fast(position,id)\nbackward(gid,1,position,wudi)\ngive_pause(gid,1,pause)\ngive_silence(gid,1,silence)"
+				},
+			"2":{
+				"skill_porb":0.1,
+				"skill_text":"地震「先忧后乐之剑」借助要石引发地震完全是不负责的行为！自身后退1步，其他人后退3步",
+				"skill_effect":"backward(id,1,position,wudi)\nn_backward(select_all(id),3,position,wudi)"
+				},		
+			"3":{
+				"skill_porb":0.08,
+				"skill_text":"气符「无念无想的境界」天子摘下帽子上的仙桃吃了起来。休息一回合，在4回合内免疫沉默，击退，眩晕",
+				"skill_effect":"give_wudi(id,4,wudi)\ngive_shiting(id,1,shiting)"
+				},
+			"4":{
+				"skill_porb":0.02,
+				"skill_text":"「全人类的绯想天」天子飞身跃起释放绯想巨炮！击退第一名4步并使其休息2回合，击退第二、三名3步并使其休息1回合",
+				"skill_effect":"fid=select_fast(position,id)\nsid=select_number(position,id,2)\nssid=select_number(position,id,3)\nbackward(fid,4,position,wudi)\ngive_pause(fid,2,pause)\nbackward(sid,3,position,wudi)\ngive_pause(sid,1,pause)\nbackward(ssid,3,position,wudi)\ngive_pause(ssid,1,pause)"
+				}
+		   }
+	},
+"11":{
+	"name":"铃仙",
+	"icon":"😷",
+	"image":"铃仙.png",
+	"speed":[1,1,2,2,2,2,1],
+	"skill":{
+			"1":{
+				"skill_porb":0.1,
+				"skill_text":"幻波「赤眼催眠」疯狂的赤色之瞳颠倒了终点！下一回合除铃仙所有人向后移动",
+				"skill_effect":"n_give_fanxiang(select_all(id),1,fanxiang)"
+				},
+			"2":{
+				"skill_porb":0.08,
+				"skill_text":"散符「真实之月」假如要是连幻视都不让你们看到的话，那就仅仅只是普通的异次元攻击而已了\n所有人前进1步，铃仙前进2步，下回合必定释放懒符「生神停止(Idling Wave)」",
+				"skill_effect":"forward(id,2,position)\nn_forward(select_all(id),1,position)\ngive_ub(id,1,ub)"
+				},		
+			"3":{
+				"skill_porb":0.1,
+				"skill_text":"懒符「生神停止(Idling Wave)」普通的人类所无法感知的长波。除铃仙所有人后退2步",
+				"skill_effect":"n_backward(select_all(id),2,position,wudi)"
+				},
+			"4":{
+				"skill_porb":0.02,
+				"skill_text":"「幻胧月睨」广范围释放令他人陷入疯狂的波长漩涡！",
+				"skill_effect":"shuchu=n_backward_r(select_all(id),3,5,position,wudi)\ntext=shuchu"
+				}
+		   }
+	},
+"12":{
+	"name":"幽幽子",
+	"icon":"😷",
+	"image":"幽幽子.png",
+	"speed":[1,1,2,2,2,2,1],
+	"skill":{
+			"1":{
+				"skill_porb":0.1,
+				"skill_text":"亡乡「亡我乡」能够统制众多的幽灵的只有姿态清楚的幽灵公主的指挥。\n自身停止一回合，将幽幽子之前的所有选手拉回幽幽子所在的位置",
+				"skill_effect":"n_gengsui(select_fast_all(id,position),rid,position)"
+				},
+			"2":{
+				"skill_porb":0.1,
+				"skill_text":"亡舞「生者必灭之理」大量的蝴蝶翩翩起舞！所有人后退2步（包括自己），其余人沉默1回合",
+				"skill_effect":"backward(id,2,position,wudi)\nn_backward(select_all(id),2,position,wudi)\nn_give_silence(select_all(id),1,silence)"
+				},		
+			"3":{
+				"skill_porb":0.08,
+				"skill_text":"樱符「完全墨染的樱花 -封印-」樱花还不能满开，至少现在还不能。前进4步，自身沉默休息1回合",
+				"skill_effect":"forward(id,4,position)\ngive_pause(id,1,pause)\ngive_silence(id,1,silence)"
+				},
+			"4":{
+				"skill_porb":0.02,
+				"skill_text":"死蝶「华胥的永眠」永眠并看到蝴蝶之梦。自身休息4回合，下回合释放「反魂蝶」",
+				"skill_effect":"give_pause(id,4,pause)\ngive_dosid(id,5,dosid)"
+				},
+			"5":{
+				"skill_porb":0,
+				"skill_text":"「反魂蝶」幽雅地绽放吧，墨染的樱花，除幽幽子所有人后退1步，之后回合继续释放直至被沉默",
+				"skill_effect":"n_backward(select_all(id),1,position,wudi)"
+				}
+		   }
+	}
+}
